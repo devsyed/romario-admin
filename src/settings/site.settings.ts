@@ -163,19 +163,19 @@ import { adminAndOwnerOnly, adminOwnerAndStaffOnly } from '@/utils/auth-utils';
 import { Routes } from '@/config/routes';
 
 export const siteSettings = {
-  name: 'ChawkBazar',
+  name: 'Romario SportsWear',
   description: '',
   logo: {
-    url: '/logo.svg',
-    alt: 'ChawkBazar',
+    url: '/romario.png',
+    alt: 'Romario',
     href: '/',
     width: 128,
     height: 40,
   },
   defaultLanguage: 'en',
   author: {
-    name: 'RedQ, Inc.',
-    websiteUrl: 'https://redq.io',
+    name: 'Romario Sports',
+    websiteUrl: 'https://romariosports.com',
     address: '',
   },
   headerLinks: [],
@@ -189,7 +189,7 @@ export const siteSettings = {
       labelTransKey: 'authorized-nav-item-logout',
     },
   ],
-  currencyCode: 'USD',
+  currencyCode: 'AED',
   sidebarLinks: {
     admin: [
       {
@@ -197,19 +197,15 @@ export const siteSettings = {
         label: 'sidebar-nav-item-dashboard',
         icon: 'DashboardIcon',
       },
-      {
-        href: Routes.shop.list,
-        label: 'sidebar-nav-item-shops',
-        icon: 'ShopIcon',
-      },
-      {
-        href: Routes.adminMyShops,
-        label: 'sidebar-nav-item-my-shops',
-        icon: 'MyShopIcon',
-      },
+      
       {
         href: Routes.product.list,
         label: 'sidebar-nav-item-products',
+        icon: 'ProductsIcon',
+      },
+      {
+        href: Routes.images,
+        label: 'Images',
         icon: 'ProductsIcon',
       },
       {
@@ -232,26 +228,11 @@ export const siteSettings = {
         label: 'sidebar-nav-item-tags',
         icon: 'TagIcon',
       },
-      // {
-      //   href: Routes.manufacturer.list,
-      //   label: 'sidebar-nav-item-manufacturers',
-      //   icon: 'DiaryIcon',
-      // },
-      // {
-      //   href: Routes.author.list,
-      //   label: 'sidebar-nav-item-authors',
-      //   icon: 'FountainPenIcon',
-      // },
       {
         href: Routes.order.list,
         label: 'sidebar-nav-item-orders',
         icon: 'OrdersIcon',
       },
-      // {
-      //   href: Routes.order.create,
-      //   label: 'sidebar-nav-item-create-order',
-      //   icon: 'CalendarScheduleIcon',
-      // },
       {
         href: Routes.user.list,
         label: 'sidebar-nav-item-users',
@@ -272,21 +253,16 @@ export const siteSettings = {
         label: 'sidebar-nav-item-shippings',
         icon: 'ShippingsIcon',
       },
-      {
-        href: Routes.withdraw.list,
-        label: 'sidebar-nav-item-withdraws',
-        icon: 'WithdrawIcon',
-      },
       // {
       //   href: Routes.message.list,
       //   label: 'sidebar-nav-item-message',
       //   icon: 'ChatIcon',
       // },
-      // {
-      //   href: Routes.refund.list,
-      //   label: 'sidebar-nav-item-refunds',
-      //   icon: 'RefundsIcon',
-      // },
+      {
+        href: Routes.refund.list,
+        label: 'sidebar-nav-item-refunds',
+        icon: 'RefundsIcon',
+      },
       // {
       //   href: Routes.question.list,
       //   label: 'sidebar-nav-item-questions',
@@ -297,11 +273,11 @@ export const siteSettings = {
       //   label: 'sidebar-nav-item-store-notice',
       //   icon: 'StoreNoticeIcon',
       // },
-      // {
-      //   href: Routes.reviews.list,
-      //   label: 'sidebar-nav-item-reviews',
-      //   icon: 'ReviewIcon',
-      // },
+      {
+        href: Routes.reviews.list,
+        label: 'sidebar-nav-item-reviews',
+        icon: 'ReviewIcon',
+      },
       {
         href: Routes.settings,
         label: 'sidebar-nav-item-settings',

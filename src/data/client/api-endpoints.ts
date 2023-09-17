@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   ATTRIBUTE_VALUES: 'attribute-values',
   ORDER_STATUS: 'order-status',
   ORDERS: 'orders',
+  BULK_IMAGES: '/api/bulk_images',
   USERS: 'users',
   REGISTER: 'register',
   PRODUCTS: 'products',
@@ -62,4 +63,5 @@ export const API_ENDPOINTS = {
   STORE_NOTICES_IS_READ: 'store-notices/read',
   STORE_NOTICE_GET_STORE_NOTICE_TYPE: 'store-notices/getStoreNoticeType',
   STORE_NOTICES_USER_OR_SHOP_LIST: 'store-notices/getUsersToNotify',
+  SYNC_PRODUCTS: '/products/sync-products'
 };

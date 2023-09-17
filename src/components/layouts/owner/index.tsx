@@ -18,7 +18,7 @@ const OwnerLayout: React.FC<{ children?: React.ReactNode }> = ({
         <OwnerInformation />
       </MobileNavigation>
 
-      <div className="flex flex-1 pt-20">
+      <div className="flex flex-1 pt-20 mt-5">
         <aside className="xl:w-76 fixed bottom-0 hidden h-full w-72 overflow-y-auto bg-white px-4 pt-22 shadow ltr:left-0 ltr:right-auto rtl:right-0 rtl:left-auto lg:block">
           <OwnerInformation />
         </aside>

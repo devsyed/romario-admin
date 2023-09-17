@@ -73,13 +73,7 @@ const ProductList = ({
       width: 74,
       render: (image: any, { name }: { name: string }) => (
         <div className="relative flex h-[42px] w-[42px] items-center">
-          <Image
-            src={image?.thumbnail ?? siteSettings.product.placeholder}
-            alt={name}
-            fill
-            sizes="(max-width: 768px) 100vw"
-            className="overflow-hidden rounded object-fill"
-          />
+          <img src={image?.original} width={40} height={40} alt="" />
         </div>
       ),
     },
@@ -112,17 +106,7 @@ const ProductList = ({
         <span className="truncate whitespace-nowrap">{type?.name}</span>
       ),
     },
-    {
-      title: t('table:table-item-shop'),
-      dataIndex: 'shop',
-      key: 'shop',
-      width: 120,
-      align: 'center',
-      ellipsis: true,
-      render: (shop: Shop) => (
-        <span className="truncate whitespace-nowrap">{shop?.name}</span>
-      ),
-    },
+  
     {
       title: 'Product Type',
       dataIndex: 'product_type',

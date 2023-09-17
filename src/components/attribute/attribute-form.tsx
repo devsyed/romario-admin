@@ -38,7 +38,7 @@ export default function CreateOrUpdateAttributeForm({ initialValues }: IProps) {
     { enabled: !!shop }
   );
 
-  const shopId = shopData?.id!;
+  const shopId = "1";
   const {
     register,
     handleSubmit,

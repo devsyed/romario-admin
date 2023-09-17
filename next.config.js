@@ -13,6 +13,7 @@ module.exports = withPWA({
   images: {
     domains: [
       'via.placeholder.com',
+      'romario.test',
       'res.cloudinary.com',
       's3.amazonaws.com',
       '18.141.64.26',

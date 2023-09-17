@@ -91,15 +91,7 @@ const TypeList = ({ types, paginatorInfo, onSort, onOrder, onPagination }: IProp
           <div className="flex flex-row items-center justify-center gap-x-2">
             {images.map((item: any) => {
               return item?.image?.map((image: any, index: number) => (
-                <Image
-                  src={image?.original ?? '/'}
-                  alt={`brand-image-${image.id}`}
-                  layout="fixed"
-                  width={40}
-                  height={40}
-                  className="overflow-hidden rounded-lg bg-gray-300 object-contain"
-                  key={`brand-image-${index}`}
-                />
+                <img src={image?.original} width={40} height={40} alt="" />
               ));
             })}
           </div>

@@ -21,7 +21,7 @@ const ExportImportView = () => {
         <ImportVariationOptions />
 
         <a
-          href={`${process?.env?.NEXT_PUBLIC_REST_API_ENDPOINT}/export-products/${shopId}`}
+          href={`${process?.env?.NEXT_PUBLIC_REST_API_ENDPOINT}/export-products/1`}
           target="_blank"
           className="flex h-36 cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed border-border-base p-5 focus:border-accent-400 focus:outline-none"
           rel="noreferrer"

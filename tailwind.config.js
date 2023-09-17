@@ -23,7 +23,7 @@ module.exports = {
       colors: {
         light: withOpacity('--color-light'),
         dark: withOpacity('--color-dark'),
-        accent: withOpacity('--color-accent'),
+        accent: "#003BD9",
         'accent-hover': withOpacity('--color-accent-hover'),
         'accent-300': withOpacity('--color-accent-300'),
         'accent-400': withOpacity('--color-accent-400'),

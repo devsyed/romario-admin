@@ -41,8 +41,7 @@ type ProductFormProps = {
   initialValues?: Product | null;
 };
 
-export default function CreateOrUpdateProductForm({
-  initialValues,
+export default function CreateOrUpdateProductForm({initialValues,
 }: ProductFormProps) {
   const router = useRouter();
   const [isSlugDisable, setIsSlugDisable] = useState<boolean>(true);
@@ -56,7 +55,7 @@ export default function CreateOrUpdateProductForm({
     }
   );
 
-  const shopId = shopData?.id!;
+  const shopId = "1";
   const isNewTranslation = router?.query?.action === 'translate';
   const isSlugEditable =
     router?.query?.action === 'edit' &&

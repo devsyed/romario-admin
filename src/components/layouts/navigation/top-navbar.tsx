@@ -23,9 +23,8 @@ const Navbar = () => {
   const { enableMultiLang } = Config;
 
   return (
-    <header className="fixed z-40 w-full bg-white shadow">
+    <header className="fixed z-40 w-full bg-white shadow mb-4">
       <nav className="flex items-center justify-between px-5 py-4 md:px-8">
-        {/* <!-- Mobile menu button --> */}
         <motion.button
           whileTap={{ scale: 0.88 }}
           onClick={toggleSidebar}
@@ -39,15 +38,6 @@ const Navbar = () => {
         </div>
 
         <div className="space-s-8 flex items-center">
-          {hasAccess(adminAndOwnerOnly, permissions) && (
-            <LinkButton
-              href={Routes.shop.create}
-              className="ms-4 md:ms-6"
-              size="small"
-            >
-              {t('common:text-create-shop')}
-            </LinkButton>
-          )}
           {enableMultiLang ? <LanguageSwitcher /> : null}
           <AuthorizedMenu />
         </div>

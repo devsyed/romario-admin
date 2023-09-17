@@ -45,4 +45,8 @@ export const productClient = {
       search: HttpClient.formatSearchParams({ shop_id }),
     });
   },
+
+  sync({ ...params }: Partial<ProductQueryOptions>) {
+    return HttpClient.get<Product[]>(API_ENDPOINTS.SYNC_PRODUCTS, {...params});
+  },
 };

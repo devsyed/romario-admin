@@ -23,12 +23,15 @@ import SelectInput from '@/components/ui/select-input';
 import { useIsRTL } from '@/utils/locals';
 import { DownloadIcon } from '@/components/icons/download-icon';
 import { useCart } from '@/contexts/quick-cart/cart.context';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { clearCheckoutAtom } from '@/contexts/checkout';
 import { ORDER_STATUS } from '@/utils/order-status';
 import OrderViewHeader from '@/components/order/order-view-header';
 import OrderStatusProgressBox from '@/components/order/order-status-progress-box';
+import Input from '@/components/ui/input';
+import { HttpClient } from '@/data/client/http-client';
+import { toast } from 'react-toastify';
 
 type FormValues = {
   order_status: any;
@@ -39,6 +42,8 @@ export default function OrderDetailsPage() {
   const { alignLeft, alignRight, isRTL } = useIsRTL();
   const { resetCart } = useCart();
   const [, resetCheckout] = useAtom(clearCheckoutAtom);
+  const [trackingId,setTrackingId] = useState('');
+  
 
   useEffect(() => {
     resetCart();
@@ -162,6 +167,17 @@ export default function OrderDetailsPage() {
     },
   ];
 
+
+  const handleUpdateTrackingId = async(e) => {
+    e.preventDefault();
+    const response = await fetch(`https://romario.test/api/update_tracking_order_id/${order?.id}/${trackingId}`)
+    if(response.status == 200){
+      toast('Updated Successfully.');
+    }else{
+      toast('An Error has occured.')
+    }
+  }
+
   return (
     <>
       <Card className="relative overflow-hidden">
@@ -190,6 +206,7 @@ export default function OrderDetailsPage() {
                 className="flex w-full items-start ms-auto lg:w-2/4"
               >
                 <div className="z-20 w-full me-5">
+                
                   <SelectInput
                     name="order_status"
                     control={control}
@@ -200,6 +217,11 @@ export default function OrderDetailsPage() {
                   />
 
                   <ValidationError message={t(errors?.order_status?.message)} />
+                  <h3 className="w-full whitespace-nowrap text-center text-sm font-semibold text-heading lg:mb-0 lg:w-1/3 lg:text-start mt-5">
+                    Order Tracking ID
+                </h3>
+                <Input className='order-tracking-id bg-white mt-0' inputClassName='bg-white' name='order-tracking-id' value={trackingId} onChange={(e) => setTrackingId(e.target.value)}/>
+                <Button className='mt-4' onClick={handleUpdateTrackingId}>Update</Button>
                 </div>
                 <Button loading={updating}>
                   <span className="hidden sm:block">
@@ -209,6 +231,7 @@ export default function OrderDetailsPage() {
                     {t('form:form:button-label-change')}
                   </span>
                 </Button>
+                
               </form>
             )}
         </div>

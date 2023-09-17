@@ -134,10 +134,9 @@ export default function Uploader({
             //   />
             // </div>
             <figure className="relative h-16 w-28">
-              <Image
+              <img
                 src={file.thumbnail}
                 alt={filename}
-                fill
                 sizes="(max-width: 768px) 100vw"
                 className="object-contain"
               />

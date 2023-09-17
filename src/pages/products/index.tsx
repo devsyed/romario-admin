@@ -7,7 +7,9 @@ import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
 import { SortOrder } from '@/types';
 import { useState } from 'react';
-import { useProductsQuery } from '@/data/product';
+import { syncProductQuery, useProductsQuery } from '@/data/product';
+import { API_ENDPOINTS } from '@/data/client/api-endpoints';
+import { productClient } from '@/data/client/product';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CategoryTypeFilter from '@/components/product/category-type-filter';
@@ -15,6 +17,12 @@ import cn from 'classnames';
 import { ArrowDown } from '@/components/icons/arrow-down';
 import { ArrowUp } from '@/components/icons/arrow-up';
 import { adminOnly } from '@/utils/auth-utils';
+import LinkButton from '@/components/ui/link-button';
+import { Config } from '@/config';
+import { useShopQuery } from '@/data/shop';
+import { useQuery } from 'react-query';
+import { HttpClient } from '@/data/client/http-client';
+import { toast } from 'react-toastify';
 
 export default function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,14 +30,19 @@ export default function ProductsPage() {
   const [category, setCategory] = useState('');
   const [page, setPage] = useState(1);
   const { t } = useTranslation();
-  const { locale } = useRouter();
   const [orderBy, setOrder] = useState('created_at');
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
   const [visible, setVisible] = useState(false);
 
+  const [syncProductsLoading,setSyncProductsLoading] = useState(false)
+
   const toggleVisible = () => {
     setVisible((v) => !v);
   };
+
+  const router = useRouter();
+  const { locale } = useRouter();
+
 
   const { products, loading, paginatorInfo, error } = useProductsQuery({
     language: locale,
@@ -41,6 +54,18 @@ export default function ProductsPage() {
     orderBy,
     sortedBy,
   });
+
+
+  const handleSyncProducts = async() => {
+    setSyncProductsLoading(true)
+    const response = await HttpClient.get(`${API_ENDPOINTS.SYNC_PRODUCTS}`)
+    console.log(response)
+    setSyncProductsLoading(false)
+    if(response){
+      toast.success('Syncing Products Successfull.');
+    }
+  }
+
 
   if (loading) return <Loader text={t('common:text-loading')} />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -68,17 +93,46 @@ export default function ProductsPage() {
             <Search onSearch={handleSearch} />
           </div>
 
-          <button
-            className="mt-5 flex items-center whitespace-nowrap text-base font-semibold text-accent md:mt-0 md:ms-5"
-            onClick={toggleVisible}
-          >
-            {t('common:text-filter')}{' '}
-            {visible ? (
-              <ArrowUp className="ms-2" />
-            ) : (
-              <ArrowDown className="ms-2" />
-            )}
-          </button>
+          {locale === Config.defaultLanguage && (
+                <LinkButton
+                  href={`/products/create`}
+                  className="h-12 ms-4 md:ms-6"
+                >
+                  <span className="hidden md:block">
+                    + {t('form:button-label-add-product')}
+                  </span>
+                  <span className="md:hidden">
+                    + {t('form:button-label-add')}
+                  </span>
+                </LinkButton>
+          )}
+
+        <LinkButton
+          href={`/products/product-import`}
+          className="h-12 ms-4 md:ms-6"
+        >
+          <span className="hidden md:block">
+            + Bulk Import Products
+          </span>
+          <span className="md:hidden">
+            + Bulk Import Products
+          </span>
+        </LinkButton>
+        <LinkButton
+          href="javascript:void(0)"
+          className="h-12 ms-4 md:ms-6"
+          onClick={handleSyncProducts}
+        >
+
+        {syncProductsLoading && (
+          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        )}
+        Sync With ERP
+        </LinkButton>
+
         </div>
 
         <div
@@ -102,6 +156,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </Card>
+      
       <ProductList
         products={products}
         paginatorInfo={paginatorInfo}

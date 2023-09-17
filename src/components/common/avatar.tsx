@@ -25,11 +25,10 @@ const Avatar: React.FC<AvatarProps> = ({
       )}
       {...rest}
     >
-      <Image
+      <img
         alt={alt}
         src={src}
-        fill
-        priority={true}
+        className='object-contain'
         sizes="(max-width: 768px) 100vw"
       />
     </div>

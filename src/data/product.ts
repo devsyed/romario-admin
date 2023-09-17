@@ -117,3 +117,14 @@ export const useProductsQuery = (
     loading: isLoading,
   };
 };
+
+export const syncProductQuery = ( params: Partial<ProductQueryOptions>,
+  options: any = {}) => {
+  const { data, error, isLoading } = useQuery([API_ENDPOINTS.SYNC_PRODUCTS],({queryKey,pageParam}) => productClient.sync(Object.assign({}, queryKey[1], pageParam)))
+
+  return {
+    syncedProducts: data,
+    error,
+    isLoading,
+  };
+};

@@ -241,17 +241,7 @@ export default function SettingsForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-wrap pb-8 my-5 border-b border-dashed border-border-base sm:my-8">
-        <Description
-          title={t('form:input-label-logo')}
-          details={logoInformation}
-          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
-        />
 
-        <Card className="w-full sm:w-8/12 md:w-2/3">
-          <FileInput name="logo" control={control} multiple={false} />
-        </Card>
-      </div>
 
       <div className="flex flex-wrap pb-8 my-5 border-b border-dashed border-border-base sm:my-8">
         <Description
@@ -417,16 +407,7 @@ export default function SettingsForm({
             />
           </div>
 
-          <div className="mb-0">
-            <CopyContent
-              label={t('text-webhook-url')}
-              variant="outline"
-              value={`${
-                process.env.NEXT_PUBLIC_REST_API_ENDPOINT
-              }/webhooks/${paymentGateway?.name?.toLowerCase()}`}
-              name="webhook"
-            />
-          </div>
+          
         </Card>
       </div>
 

@@ -11,6 +11,9 @@ import { adminOnly } from '@/utils/auth-utils';
 
 import { useRouter } from 'next/router';
 import { useAttributesQuery } from '@/data/attributes';
+import LinkButton from '@/components/ui/link-button';
+import { Config } from '@/config';
+import { useShopQuery } from '@/data/shop';
 
 export default function AttributePage() {
   const { t } = useTranslation();
@@ -34,6 +37,16 @@ export default function AttributePage() {
             {t('common:sidebar-nav-item-attributes')}
           </h1>
         </div>
+        {locale === Config.defaultLanguage && (
+            <LinkButton
+              href={`/attributes/create`}
+              className="mt-5 h-12 w-full md:mt-0 md:w-auto md:ms-auto"
+            >
+              <span>
+                + {t('form:button-label-add')} {t('common:attribute')}
+              </span>
+            </LinkButton>
+          )}
       </Card>
       <AttributeList
         attributes={attributes}
