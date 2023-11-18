@@ -103,7 +103,7 @@
   "input-label-shippings": "Shippings",
   "input-label-free": "Free",
   "input-label-fixed": "Fixed",
-  "input-label-site-title": "Site Title",
+  "input-label-site-text":"Edit Text on Website",
   "input-label-site-subtitle": "Site Subtitle",
   "input-label-currency": "Currency",
   "input-label-tax-class": "Tax Class",
@@ -369,5 +369,15 @@
   "input-label-use-google-map-service": "Enable Google Map Address",
   "input-label-tax-name": "Tax class name *",
   "input-label-tax-rate": "Tax rate *",
-  "input-label-coupon-code": "Code *"
+  "input-label-coupon-code": "Code *",
+  "input-label-site-title": "Site Title",
+  "announcement-bar-text":"Announcement Bar Text",
+  "slider-image":"Select Image for Main Banner on Homepage",
+  "slider-title":"Slide Title",
+  "slider-text":"Slide Text",
+  "sliderButtonText":"Slide Button Text",
+  "topBrandsText":"Top Brands Text",
+  "promoCodeText":"PromoCode Text",
+  "featuredProducts":"Featured Products Text",
+  "newsletterText":"Newsletter"
 }

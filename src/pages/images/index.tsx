@@ -27,6 +27,7 @@ export default function Images() {
     })
     if(response.status == 200){
       const data = await response.json();
+      console.log(data)
       setRefetch(data)
       toast('All Images have been uploaded to the respective Products.')
     }else{

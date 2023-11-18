@@ -887,6 +887,8 @@ export interface SettingsOptions {
   seo?: SeoSettings;
   google?: GoogleSettings;
   facebook?: FacebookSettings;
+  announcementBarText:string;
+  sliderTitle:string;
 }
 
 export interface ContactDetails {
@@ -1058,6 +1060,7 @@ export interface SettingsOptions {
   seo?: SeoSettings;
   google?: GoogleSettings;
   facebook?: FacebookSettings;
+  sliderTitle: string;
 }
 
 export interface SettingsOptionsInput {

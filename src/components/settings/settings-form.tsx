@@ -53,6 +53,15 @@ type FormValues = {
   maximumQuestionLimit: number;
   currencyToWalletRatio: number;
   contactDetails: ContactDetailsInput;
+  announcementBarText: string;
+  sliderTitle:string;
+  sliderText:string;
+  sliderButtonText:string;
+  topBrandsText:string;
+  promoCode:string;
+  promoCodeText:string;
+  featuredProducts:string;
+  newsletterText:string;
   deliveryTime: {
     title: string;
     description: string;
@@ -132,7 +141,7 @@ export default function SettingsForm({
   const { mutate: updateSettingsMutation, isLoading: loading } =
     useUpdateSettingsMutation();
   const { language, options } = settings ?? {};
-
+  console.log(options)
   const {
     register,
     handleSubmit,
@@ -156,6 +165,8 @@ export default function SettingsForm({
       },
       deliveryTime: options?.deliveryTime ? options?.deliveryTime : [],
       logo: options?.logo ?? '',
+      announcementBarText: options?.announcementBarText ?? '',
+      sliderTitle: options?.sliderTitle ?? '',
       currency: options?.currency
         ? CURRENCY.find((item) => item.code == options?.currency)
         : '',
@@ -287,45 +298,6 @@ export default function SettingsForm({
             className="mb-5"
             disabled={isNotDefaultSettingsPage}
           />
-          {/* <Input
-            label={`${t('form:input-label-wallet-currency-ratio')}`}
-            {...register('currencyToWalletRatio')}
-            type="number"
-            error={t(errors.currencyToWalletRatio?.message!)}
-            variant="outline"
-            className="mb-5"
-            disabled={isNotDefaultSettingsPage}
-          /> */}
-          {/* <Input
-            label={`${t('form:input-label-signup-points')}`}
-            {...register('signupPoints')}
-            type="number"
-            error={t(errors.signupPoints?.message!)}
-            variant="outline"
-            className="mb-5"
-            disabled={isNotDefaultSettingsPage}
-          /> */}
-          {/* <Input
-            label={`${t('form:input-label-maximum-question-limit')}`}
-            {...register('maximumQuestionLimit')}
-            type="number"
-            error={t(errors.maximumQuestionLimit?.message!)}
-            variant="outline"
-            className="mb-5"
-            disabled={isNotDefaultSettingsPage}
-          /> */}
-
-          {/* <div className="mb-5">
-            <div className="flex items-center gap-x-4">
-              <SwitchInput
-                name="useOtp"
-                control={control}
-                disabled={isNotDefaultSettingsPage}
-              />
-              <Label className="mb-0">{t('form:input-label-enable-otp')}</Label>
-            </div>
-          </div> */}
-
           <div className="mb-5">
             <Label>{t('form:input-label-tax-class')}</Label>
             <SelectInput
@@ -373,6 +345,73 @@ export default function SettingsForm({
               disabled={isNotDefaultSettingsPage}
             />
           )}
+        </Card>
+      </div>
+
+      <div className="flex flex-wrap pb-8 my-5 border-b border-dashed border-border-base sm:my-8">
+        <Description
+          title={t('form:input-label-site-text')}
+          details={t('form:site-info-help-text')}
+          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
+        />
+
+        <Card className="w-full sm:w-8/12 md:w-2/3">
+          <Input
+            label={t('form:announcement-bar-text')}
+            {...register('announcementBarText')}
+            error={t(errors.announcementBarText?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          <div className="mb-5">
+            <Label>{t('form:slider-image')}</Label>
+            <FileInput name="heroImage" control={control} multiple={false} />
+          </div>
+          <div className="mb-5">
+          <Input
+            label={t('form:slider-title')}
+            {...register('sliderTitle')}
+            error={t(errors.sliderTitle?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          </div>
+          <div className="mb-5">
+            <Input
+              label={t('form:slider-text')}
+              {...register('sliderText')}
+              error={t(errors.sliderText?.message!)}
+              variant="outline"
+              className="mb-5"
+            />
+          </div>
+          <div className="mb-5">
+            <Input
+              label={t('form:sliderButtonText')}
+              {...register('sliderButtonText')}
+              error={t(errors.sliderButtonText?.message!)}
+              variant="outline"
+              className="mb-5"
+            />
+          </div>
+          <div className="mb-5">
+            <Input
+              label={t('form:topBrandsText')}
+              {...register('topBrandsText')}
+              error={t(errors.topBrandsText?.message!)}
+              variant="outline"
+              className="mb-5"
+            />
+          </div>
+          <div className="mb-5">
+            <Input
+              label={t('form:promoCodeText')}
+              {...register('promoCodeText')}
+              error={t(errors.promoCodeText?.message!)}
+              variant="outline"
+              className="mb-5"
+            />
+          </div>
         </Card>
       </div>
 
