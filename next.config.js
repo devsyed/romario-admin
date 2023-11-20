@@ -2,7 +2,7 @@
 const runtimeCaching = require('next-pwa/cache');
 const { i18n } = require('./next-i18next.config');
 const withPWA = require('next-pwa')({
-  disable: process.env.NODE_ENV === 'development',
+  // disable: process.env.NODE_ENV === 'development',
   dest: 'public',
   runtimeCaching,
 });
@@ -14,6 +14,9 @@ module.exports = withPWA({
     domains: [
       'via.placeholder.com',
       'romario.test',
+      'romariosports.com',
+      'api.romariosports.com',
+      'admin.romariosports.com',
       'res.cloudinary.com',
       's3.amazonaws.com',
       '18.141.64.26',
