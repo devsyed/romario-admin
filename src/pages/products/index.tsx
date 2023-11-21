@@ -93,31 +93,7 @@ export default function ProductsPage() {
             <Search onSearch={handleSearch} />
           </div>
 
-          {locale === Config.defaultLanguage && (
-                <LinkButton
-                  href={`/products/create`}
-                  className="h-12 ms-4 md:ms-6"
-                >
-                  <span className="hidden md:block">
-                    + {t('form:button-label-add-product')}
-                  </span>
-                  <span className="md:hidden">
-                    + {t('form:button-label-add')}
-                  </span>
-                </LinkButton>
-          )}
-
-        <LinkButton
-          href={`/products/product-import`}
-          className="h-12 ms-4 md:ms-6"
-        >
-          <span className="hidden md:block">
-            + Bulk Import Products
-          </span>
-          <span className="md:hidden">
-            + Bulk Import Products
-          </span>
-        </LinkButton>
+         
         <LinkButton
           href="javascript:void(0)"
           className="h-12 ms-4 md:ms-6"

@@ -21,9 +21,9 @@ export default function Images() {
       formData.append(`file_${i}`,files[i]);
     }
 
-    const response = await fetch('https://romario.test/api/bulk_images', {
+    const response = await fetch(process.env.NEXT_PUBLIC_REST_API_ENDPOINT + '/api/bulk_images', {
       method: 'POST',
-      body: formData, // Send the FormData object directly
+      body: formData,
     })
     if(response.status == 200){
       const data = await response.json();
@@ -42,7 +42,7 @@ export default function Images() {
   };
 
   const getImages = async() => {
-    const response = await fetch('https://romario.test/api/bulk_images')
+    const response = await fetch(process.env.NEXT_PUBLIC_REST_API_ENDPOINT + '/api/bulk_images')
     if(response.status == 200){
       const data = await response.json();
       setImages(data)
