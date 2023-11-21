@@ -2,6 +2,7 @@ import Input from '@/components/ui/input';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import Button from '@/components/ui/button';
 import { useState } from 'react';
+
 import {
   ContactDetailsInput,
   Shipping,
@@ -54,6 +55,7 @@ type FormValues = {
   currencyToWalletRatio: number;
   contactDetails: ContactDetailsInput;
   announcementBarText: string;
+  termsAndConditions:string;
   sliderTitle:string;
   sliderText:string;
   sliderButtonText:string;
@@ -166,6 +168,7 @@ export default function SettingsForm({
       deliveryTime: options?.deliveryTime ? options?.deliveryTime : [],
       logo: options?.logo ?? '',
       announcementBarText: options?.announcementBarText ?? '',
+      termsAndConditions: options?.termsAndConditions ?? '',
       sliderTitle: options?.sliderTitle ?? '',
       currency: options?.currency
         ? CURRENCY.find((item) => item.code == options?.currency)
@@ -408,6 +411,16 @@ export default function SettingsForm({
               label={t('form:promoCodeText')}
               {...register('promoCodeText')}
               error={t(errors.promoCodeText?.message!)}
+              variant="outline"
+              className="mb-5"
+            />
+          </div>
+
+          <div className="mb-5">
+            <TextArea
+              label="Terms and Conditions"
+              {...register('termsAndConditions')}
+              error={t(errors.sliderButtonText?.message!)}
               variant="outline"
               className="mb-5"
             />

@@ -889,6 +889,7 @@ export interface SettingsOptions {
   facebook?: FacebookSettings;
   announcementBarText:string;
   sliderTitle:string;
+  termsAndConditions:string
 }
 
 export interface ContactDetails {
